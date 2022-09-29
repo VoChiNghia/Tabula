@@ -1,0 +1,23 @@
+@mixin flex($justify, $align){
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+@mixin mobile {
+    @media (max-width: 480px){
+        @content
+    
+    };
+}
+
+@mixin tablet  {
+    @media (min-width: 480px) and (max-width: 940px) {
+        @content
+    };
+}
+$bg-main: #b61984;
+$color-main:#b61984;
+$color-white: #fff;
+$text-color:#181818;
+$box-shadow:0 30px 30px -10px rgb(0 0 0 / 20%);
+$border: 1px solid rgb(196, 196, 196)

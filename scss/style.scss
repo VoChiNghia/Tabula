@@ -1,0 +1,590 @@
+@import './varible';
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: roboto, sans-serif;
+}
+
+.header{
+    position: fixed;
+    width: 100%;
+    z-index: 101;
+    max-height:90px;
+    .navbar{
+        .navbar-wrapper{
+            .navbar-toggler{
+                border:none;
+              outline: none;
+             
+            }
+            
+        }
+        
+       }
+   .navbar-brand{
+    img{
+        @include mobile{
+            height:50px;
+        }
+     
+    }
+   
+   }
+    .witget-phone{
+          
+           background-color: $bg-main;
+           border: none;
+           padding: 10px 20px;
+           color: transparent;
+           border-radius:50px;
+           margin: 20px 0;
+           transition: all 300ms ease;
+            position:relative;
+           
+        
+            &::after{
+                position:absolute;
+                content: "(+1) 555 234-8765";
+                z-index: 100;
+                color: #fff;
+                background-color:transparent;
+                @include flex(center,center);
+                top: 0;
+                left: 0;
+                width: 100%;
+                height:100%;
+                font-size: 13px;
+            }
+           &::before{
+            content: "";
+           display: flex;
+           align-items: center;
+           justify-content: center;
+            position: absolute;
+            background-color:#fff;
+            width: 100%;
+            height: 100%;
+            border-radius:50px;
+            left: 0;
+            top: 0;
+            transform: scale(0.5,0);
+            z-index:1;
+            transition: all 300ms ease;
+            color: $color-main;
+           }
+           &:hover::before{
+           
+            border: 1px solid $color-main; 
+            transform:scale(1,1)
+           }
+           &:hover::after{
+           color: $color-main;
+           }
+           
+           
+        
+    }
+    .header-icon i{
+        margin:0 5px;
+        &:hover{
+            color: $color-main;
+        }
+    }
+
+    .navbar-nav .nav-link{
+        color: $text-color;
+        font-weight: 500;
+        margin-right: 30px !important;
+        position: relative;
+       font-size: 12px; 
+        &::after{
+            content: '';
+            position: absolute;
+            bottom:-25px;
+           left: 50%;
+           transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: $bg-main;
+            border-radius: 50%;
+            opacity: 0;
+          
+        }
+
+       &.active::after{
+        opacity: 1;
+        @include mobile{
+           visibility: hidden;
+        }
+       }
+       &:hover{
+        color: $color-main;
+       }
+        
+    }
+   &.active{
+    background-color:#fff;
+    animation: fadeDown 0.5s ease;
+    transition: all 0.5s ease;
+    
+    .navbar-brand{
+        visibility: hidden;
+    }
+    @include tablet{
+        .navbar-brand{
+            visibility: visible;
+        }
+    }
+    @include mobile{
+        .navbar-brand{
+            visibility: visible;
+        }
+    }
+   }
+   @keyframes fadeDown {
+    from{
+        transform: translateY(-100px);
+       
+    }
+    to{
+        transform: translateY(0);
+       
+    }
+}
+}
+
+
+.header-main{
+    background-image: url(../img/yellow_top_wave_01.png);
+    background-size: left;
+    background-position:top center;
+    background-repeat: no-repeat;
+    height:700px;
+    width: 100%;
+    position: relative;
+    .carousel{
+        .container{
+           padding-top: 100px;
+            @include flex(space-around,center);
+            @include mobile{
+                flex-direction: column;
+            }
+            @include tablet{
+                flex-direction: column;
+            }
+        .carousel-title{
+            h1{
+                font-size:60px;
+                font-weight: 700;
+            }
+            p{
+                color:$color-main;
+            }
+        }
+        .carousel-img{
+               img{
+                @include mobile{
+                    width: 100%;
+                }
+               }
+        }
+        }
+        
+    }
+    .header_bottom{
+        position:absolute;
+        bottom:0;
+        img{
+            width: 100%;
+            
+           
+        }
+    }
+}
+.list-card{
+    position: relative;
+    
+    .list-group{
+         
+      z-index:0;
+      background-color:#dcd1f0;
+      .card-item{
+        position: relative;
+        z-index: 100;
+       
+      
+      }
+      @for $i from 1 through 8{
+        .item-#{$i}{
+         
+         animation-name: fade;
+         animation-duration:$i*2s;
+        }
+      }
+      .card{
+        margin-bottom: 30px;
+        text-align: center;
+        .card-body{
+            .card-title{
+                font-size: 12px;
+                color: $color-main;
+            }
+            h3{
+                font-size: 20px;
+                font-weight: 600;
+            }
+            .card-text{
+                font-size: 15px;
+                margin-top: 5px;
+            }
+        }
+    }
+    }
+    
+   .list-card-img-bottom{
+        position:absolute;
+        bottom: 0;
+        z-index: 2;
+        img{
+            
+            width: 100%;
+        }
+      
+    }
+
+}
+.form-contact{
+    position: relative;
+   .container{
+    @include flex(center,center);
+   
+    @include mobile{
+        flex-direction: column;
+    }
+    @include tablet{
+        flex-direction: column;
+    }
+
+   }
+
+   .form-contact_right{
+    border-radius: 10px;
+    max-width: 400px;
+    input::placeholder{
+        font-size: 13px;
+    }
+    textarea::placeholder{
+        font-size: 14px;
+    }
+    h1{
+        font-weight:bold;
+    }
+        box-shadow: $box-shadow;
+        background-color: rgba(255, 255, 255, 1);
+        padding: 30px 20px;
+        text-align: center;
+        .form_name-email{
+            @include flex(center,center);
+            margin-top: 20px;
+            div:nth-child(1){
+                position: relative;
+                margin-right: 20px;
+                span{
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    margin-left: 15px;
+                    font-size: 13px;
+                    color:$color-main;
+                }
+                input{
+                    width: 100%;
+                    border-radius:50px;
+                    outline: none;
+                    border:$border;
+                    padding:5px 40px;
+                }
+            }
+            div:nth-child(2){
+                position: relative;
+                span{
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    margin-left: 15px;
+                    font-size: 13px;
+                    color:$color-main;
+                }
+                input{
+                    width: 100%;
+                    border-radius:50px;
+                    outline: none;
+                    border:$border;
+                    padding:5px 40px;
+                }
+            }
+        }
+        .form_english{
+            margin-top: 20px;
+            width: 100%;
+            position: relative;
+           cursor: pointer;
+            span{
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                margin-left: 15px;
+                font-size: 13px;
+                color:$color-main;
+            }
+            .select-lg{
+                width: 100%;
+                border-radius:50px;
+                outline: none;
+                border:$border;
+                padding:20px 40px;
+                position: relative;
+                font-size: 15px;
+                color: gray;
+                
+                span{
+                    
+                    padding: 0px 20px;
+                    color: gray;
+                }
+                span:nth-child(2){
+                  position:absolute;
+                  right:-80%;
+                 padding:10px;
+                }
+               
+            }
+            
+        }
+        .contact-list{
+            list-style: none;
+            text-align: left;
+            font-size: 12px;
+            color: gray;
+            border:$border;
+            position: absolute;
+            z-index: 99;
+            background-color: #fff;
+            width: 24%;
+            .contact-list-item{
+                padding:3px 0;
+                &:hover{
+                    color:$color-main;
+                    cursor: pointer;
+                }
+            }
+            visibility: hidden;
+
+            &.active{
+                visibility: visible;
+            }
+        }
+        .form_message{
+            margin-top: 20px;
+            width: 100%;
+            position: relative;
+            span{
+                position: absolute;
+                left: 0;
+                top: 15%;
+                
+                margin-left: 15px;
+                font-size: 13px;
+                color:$color-main;
+            }
+            textarea{
+                width: 100%;
+                border-radius:20px;
+                outline: none;
+                border:$border;
+                padding:5px 40px;
+            }
+        }
+       .btn-send{
+       float: left;
+       background-color: $bg-main;
+       border: none;
+       padding:10px 50px;
+       color: transparent;
+       border-radius:50px;
+       margin: 30px 0;
+       transition: all 300ms ease;
+        position:relative;
+
+        &::after{
+            position:absolute;
+            content: "SEND";
+            z-index: 100;
+            color: #fff;
+            background-color:transparent;
+            @include flex(center,center);
+            top: 0;
+            height:100%;
+            font-size: 13px;
+        }
+       &::before{
+        content: "";
+       display: flex;
+       align-items: center;
+       justify-content: center;
+        position: absolute;
+        background-color:#fff;
+        width: 100%;
+        height: 100%;
+        border-radius:50px;
+        left: 0;
+        top: 0;
+        transform: scale(0.5,0);
+        z-index:1;
+        transition: all 300ms ease;
+        color: $color-main;
+       }
+       &:hover::before{
+       
+        border: 1px solid $color-main; 
+        transform:scale(1,1)
+       }
+       &:hover::after{
+       color: $color-main;
+       }
+       
+       }
+   }
+   .contact-form-buttom{
+        background-image: url(../img/accent_bottom_wave_01.png);
+        background-size: cover;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 500px;
+        z-index:-1;
+   }
+}
+.footer{
+    background-image: url(../img/footer_background.jpg);
+    background-size: cover;
+    background-position: bottom;
+    color: #fff; 
+    padding: 120px 0;
+    h2{
+        padding: 20px 0;
+    }
+    ul{
+       padding: 0;
+       color: #fff;
+        li{
+            list-style: none;
+            p{
+                font-size: 15px;
+                span{
+                    margin-right: 5px;
+                }
+            }
+            a{
+                text-decoration: none;
+                color: #fff;
+                display: inline-block;
+                padding: 10px 0;
+               
+               border-bottom: 1px solid #77025858;
+               cursor: pointer;
+               &:hover{
+                opacity: 0.8;
+               }
+            }
+            i{
+                margin-right: 10px;
+                &:hover{
+                    color: #000;
+                }
+            }
+        }
+    }
+    input{
+        padding: 15px 0;
+        border-radius: 50px;
+       outline:none;
+       background-color:transparent;
+       border: 1px solid #77025858;
+       text-align: center;
+       color: #fff;
+        transition: all 300ms ease;
+       &:focus{
+        border: 1px solid #fff;
+       }
+       &::placeholder{
+        color: #fff;
+        font-size: 15px;
+       }
+    }
+    button{
+        float: left;
+       background-color: $bg-main;
+       border: none;
+       padding: 15px 50px;
+       color: transparent;
+       border-radius:50px;
+       margin: 20px 0;
+       transition: all 300ms ease;
+        position:relative;
+
+        &::after{
+            position:absolute;
+            content: "SUBSCRIBE";
+            z-index: 100;
+            color: #fff;
+            background-color:transparent;
+            @include flex(center,center);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height:100%;
+            font-size: 13px;
+        }
+       &::before{
+        content: "";
+       display: flex;
+       align-items: center;
+       justify-content: center;
+        position: absolute;
+        background-color:#fff;
+        width: 100%;
+        height: 100%;
+        border-radius:50px;
+        left: 0;
+        top: 0;
+        transform: scale(0.5,0);
+        z-index:1;
+        transition: all 300ms ease;
+        color: $color-main;
+       }
+       &:hover::before{
+       
+        border: 1px solid $color-main; 
+        transform:scale(1,1)
+       }
+       &:hover::after{
+       color: $color-main;
+       }
+       
+       
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
